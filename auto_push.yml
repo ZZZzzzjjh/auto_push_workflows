@@ -1,0 +1,22 @@
+name: Auto Hot Search Push
+
+on:
+  schedule:
+    # 这里的 cron 是格林威治时间，0 0 * * * 代表每天北京时间早上 8 点
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 支持手动点击运行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v2
+      - name: 安装 Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: 安装依赖
+        run: pip install requests
+      - name: 运行脚本
+        run: python main.py
