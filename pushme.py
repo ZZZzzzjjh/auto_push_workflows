@@ -1,8 +1,8 @@
 import requests
 import json
 import time
-
-PUSH_KEY = "uga2Kex0425Jg1E9r3qE"
+import os
+PUSH_KEY = os.getenv("MY_PUSH_KEY")
 
 
 def load_json_and_format(filename, title_prefix):
